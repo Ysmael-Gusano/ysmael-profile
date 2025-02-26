@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ysmael Lam Ming Ho</title>
+    <style>
+        :root {
+            --primary-color: #4169e1;
+            --secondary-color: #2e3f6f;
+            --accent-color: #ff6b35;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --section-bg: #fff;
+            --achievement-bg: #f0f8ff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background: repeating-linear-gradient(
+                45deg,
+                #ffffff,
+                #ffffff 10px,
+                #f0f0f0 10px,
+                #f0f0f0 20px
+            );
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid white;
+            margin: 0 auto 20px auto;
+            display: block;
+            background-color: #ddd;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        .section {
+            background-color: var(--section-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-list li {
+            margin-bottom: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            min-width: 120px;
+            color: var(--secondary-color);
+        }
+        
+        .passions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .passion-item {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .passion-icon {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .education-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+        
+        .education-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .achievement-card {
+            background-color: var(--achievement-bg);
+            border-radius: 8px;
+            padding: 15px;
+            position: relative;
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .achievement-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .medal {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: gold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .medal.silver {
+            background-color: silver;
+        }
+        
+        .medal.bronze {
+            background-color: #cd7f32;
+        }
+        
+        .achievement-date {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            margin-top: 30px;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+        
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            .info-item {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .education-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .achievements {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-bg"></div>
+            <img src="/api/placeholder/200/200" alt="Ysmael's Photo" class="profile-img">
+            <h1>Ysmael Lam Ming Ho</h1>
+            <p class="tagline">Student • Athlete • Growing Every Day</p>
+        </header>
+        
+        <div class="section">
+            <h2>About Ysmael</h2>
+            <ul class="info-list">
+                <li class="info-item">
+                    <span class="info-label">Born:</span>
+                    <span>August 26, 2011 in Gilbert, Arizona</span>
+                </li>
+                <li class="info-item">
+                    <span class="info-label">Age:</span>
+                    <span>13 years old</span>
+                </li>
+                <li class="info-item">
+                    <span class="info-label">Current School:</span>
+                    <span>Het Arthur Alex Hoogendoorn Atheneum</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>What He Loves</h2>
+            <div class="passions">
+                <div class="passion-item">
+                    <span class="passion-icon">J</span>
+                    Jiu Jitsu (White Belt, 4 Stripes)
+                </div>
+                <div class="passion-item">
+                    <span class="passion-icon">T</span>
+                    Thai Boxing
+                </div>
+                <div class="passion-item">
+                    <span class="passion-icon">S</span>
+                    Sports
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">January 28, 2025</div>
+                    <div class="timeline-content">Started Thai Boxing training</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Current</div>
+                    <div class="timeline-content">Training at Invictus BJJ - White belt with 4 stripes</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Education Journey</h2>
+            
+            <div class="education-item">
+                <h3>Junior Secondary School</h3>
+                <div class="education-info">
+                    <div>Het Arthur Alex Hoogendoorn Atheneum</div>
+                    <div>2023 - Present</div>
+                </div>
+                <div>Commewijnestraat 12, Paramaribo</div>
+            </div>
+            
+            <div class="education-item">
+                <h3>Primary School</h3>
+                <div class="education-info">
+                    <div>De Vrije School</div>
+                    <div>2017 - 2023</div>
+                </div>
+                <div>Dr. Sophie Redmondstraat 252, Paramaribo</div>
+            </div>
+            
+            <div class="education-item">
+                <h3>Elementary School</h3>
+                <div class="education-info">
+                    <div>Het Vogelnestje</div>
+                    <div>2014 - 2017</div>
+                </div>
+                <div>Miamistraat 7, Paramaribo</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Achievements</h2>
+            
+            <div class="achievements">
+                <div class="achievement-card">
+                    <div class="medal">1</div>
+                    <h3>BJJ Competition Champion</h3>
+                    <p>First place in Jiu Jitsu competition</p>
+                    <div class="achievement-date">Date to be added</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="medal">1</div>
+                    <h3>BJJ Competition Champion</h3>
+                    <p>First place in Jiu Jitsu competition</p>
+                    <div class="achievement-date">Date to be added</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="medal silver">2</div>
+                    <h3>Tennis Tournament</h3>
+                    <p>Second place finish</p>
+                    <div class="achievement-date">Date to be added</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="medal silver">2</div>
+                    <h3>Tennis Tournament</h3>
+                    <p>Second place finish</p>
+                    <div class="achievement-date">Date to be added</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Last Updated: February 2025</p>
+            <p>Created with ❤️ for Ysmael's journey</p>
+        </footer>
+    </div>
+</body>
+</html>
